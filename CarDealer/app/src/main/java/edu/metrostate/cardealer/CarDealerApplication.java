@@ -3,12 +3,19 @@ package edu.metrostate.cardealer;
 import android.app.Application;
 import android.util.Log;
 
+import org.xml.sax.SAXException;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import edu.metrostate.cardealer.controllers.commands.FileImporter;
+import edu.metrostate.cardealer.models.Company;
+import edu.metrostate.cardealer.models.Vehicle;
 public class CarDealerApplication extends Application {
     private final List<Vehicle> vehicleList = new ArrayList<>();
 
@@ -16,10 +23,11 @@ public class CarDealerApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-
-        //TODO: Remove this code
-        for(int i = 0; i < 20; i++) {
-            vehicleList.add(new Vehicle(Integer.toString(i), "Model " + i));
+        // todo user input
+        try {
+            importFile("dealer.xml");
+        } catch (IOException | ParserConfigurationException | SAXException e) {
+            e.printStackTrace();
         }
 
     }
@@ -28,14 +36,14 @@ public class CarDealerApplication extends Application {
         return vehicleList;
     }
 
-    public void writeFile() {
+    public void writeFile(String fileName) {
 
         //TODO: Remove this code
         // Gets the output path which is /sdcard/Android/data/edu.metrostate.cardealer/files directory
         File externalDir = getExternalFilesDir(null);
 
         // Establishes the output file as "myfile.txt"
-        File outputFile = new File(externalDir, "myfile.txt");
+        File outputFile = new File(externalDir, fileName);
 
         try {
             Files.createFile(outputFile.toPath());
@@ -46,6 +54,22 @@ public class CarDealerApplication extends Application {
         } catch (IOException ex) {
             Log.e("FileCreation", "Error creating file", ex);
         }
+
+    }
+
+    public void importFile(String fileName) throws IOException, ParserConfigurationException, SAXException {
+        File externalDir = getExternalFilesDir(null);
+
+        File inputFile = new File(externalDir, fileName);
+
+        FileImporter fileImport = new FileImporter();
+
+        fileImport.fileImport(inputFile.getAbsolutePath());
+
+        //debug
+        vehicleList.addAll(Company.getCompany().get(0).getListOfCarsAtDealer());
+
+
 
     }
 

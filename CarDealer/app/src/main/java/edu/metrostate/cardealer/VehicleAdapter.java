@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import edu.metrostate.cardealer.models.Vehicle;
+
 import java.util.List;
 
 public class VehicleAdapter extends ArrayAdapter<Vehicle> {
@@ -30,8 +32,8 @@ public class VehicleAdapter extends ArrayAdapter<Vehicle> {
         TextView model = convertView.findViewById(R.id.vehicle_model);
 
 
-        id.setText(getItem(position).getId());
-        model.setText(getItem(position).getModel());
+        id.setText(getItem(position).getVehicle_id());
+        model.setText(getItem(position).getVehicle_model());
 
         return convertView;
     }
