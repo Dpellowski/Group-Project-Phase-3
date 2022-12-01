@@ -15,6 +15,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import edu.metrostate.cardealer.controllers.commands.FileImporter;
 import edu.metrostate.cardealer.models.Company;
+import edu.metrostate.cardealer.models.Dealer;
 import edu.metrostate.cardealer.models.Vehicle;
 public class CarDealerApplication extends Application {
     private final List<Vehicle> vehicleList = new ArrayList<>();
@@ -62,7 +63,9 @@ public class CarDealerApplication extends Application {
 
         //debug
         //todo make it dealers
-        vehicleList.addAll(Company.getCompany().get(0).getListOfCarsAtDealer());
+        for(Dealer d : Company.getCompany()){
+            vehicleList.addAll(d.getListOfCarsAtDealer());
+        }
 
 
 
