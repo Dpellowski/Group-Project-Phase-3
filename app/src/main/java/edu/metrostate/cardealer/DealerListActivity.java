@@ -44,8 +44,8 @@ public class DealerListActivity  extends AppCompatActivity{
         Dialog dialog = new AlertDialog.Builder(this)
                 .setTitle("My alert")
                 .setCancelable(false)
-                .setTitle("Vehicle ID: " + dealer.getDealer_id())
-                .setMessage("Model: " + dealer.getName())
+                .setTitle("Dealer ID: " + dealer.getDealer_id())
+                .setMessage("Dealer Name: " + dealer.getName())
                 .setPositiveButton( "OK", (dialog1, id) -> dialog1.dismiss()).create();
 
         dialog.show();
