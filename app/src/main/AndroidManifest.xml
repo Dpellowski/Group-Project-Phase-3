@@ -21,6 +21,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".DealerListActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ImportFileActivity"
             android:exported="false">
             <meta-data

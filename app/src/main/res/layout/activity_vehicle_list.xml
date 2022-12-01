@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     tools:context=".VehicleListActivity">
+
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
