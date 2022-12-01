@@ -41,7 +41,11 @@ public class ImportFileActivity extends AppCompatActivity {
                     //go back to main if success
                     Intent intent = new Intent(ImportFileActivity.this, MainActivity.class);
                     startActivity(intent);
-                } catch (IOException | ParserConfigurationException | SAXException e) {
+                } catch (ParserConfigurationException | SAXException e) {
+                    e.printStackTrace();
+                }
+                catch(IOException e){
+                    //Only display on IOExceptions
                     error.setText("Invalid File");
                     e.printStackTrace();
                 }
