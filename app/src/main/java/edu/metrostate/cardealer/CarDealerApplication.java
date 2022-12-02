@@ -26,6 +26,7 @@ public class CarDealerApplication extends Application {
         super.onCreate();
 
 
+
     }
 
     public List<Vehicle> getVehicleList() {
@@ -57,6 +58,7 @@ public class CarDealerApplication extends Application {
     }
 
     public void importFile(String fileName) throws IOException, ParserConfigurationException, SAXException {
+
         File externalDir = getExternalFilesDir(null);
 
         File inputFile = new File(externalDir, fileName);
