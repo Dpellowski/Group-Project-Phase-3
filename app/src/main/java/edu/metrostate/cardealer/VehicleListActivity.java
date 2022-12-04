@@ -17,6 +17,8 @@ import edu.metrostate.cardealer.models.Vehicle;
 
 public class VehicleListActivity extends AppCompatActivity {
 
+    Dealer dealerObject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,7 @@ public class VehicleListActivity extends AppCompatActivity {
 
         //Xue's code
         Intent i = getIntent();
-        Dealer dealerObject = (Dealer)i.getSerializableExtra("selectedDealer");
+        dealerObject = (Dealer)i.getSerializableExtra("selectedDealer");
         TextView dealerName = findViewById(R.id.title);
         dealerName.setText(dealerObject.getName());
 
@@ -73,10 +75,6 @@ public class VehicleListActivity extends AppCompatActivity {
     public void addCarBtn(View v){
         //Intent to go to the AddCarActivity
         Intent i = new Intent(VehicleListActivity.this, AddCarActivity.class);
-
-        //Intent to get the dealer from previous activity
-        Intent dealerGetter = getIntent();
-        Dealer dealerObject = (Dealer)dealerGetter.getSerializableExtra("selecedDealer");
 
         //Dealer object to be pass over to the AddCarActivity
         i.putExtra("DealerObject", dealerObject);
