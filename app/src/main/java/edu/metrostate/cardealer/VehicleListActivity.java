@@ -55,10 +55,12 @@ public class VehicleListActivity extends AppCompatActivity {
                 .setTitle("My alert")
                 .setCancelable(false)
                 .setTitle("Vehicle ID: " + vehicle.getVehicle_id())
-                .setMessage("Model: " + vehicle.getVehicle_model())
-                .setMessage("Vehicle Type: " + vehicle.getVehicle_type())
-                .setMessage("Vehicle Manufacturer: " + vehicle.getVehicle_manufacturer())
-                .setMessage("Vehicle Price: " + vehicle.getPrice())
+                .setMessage("Model: " + vehicle.getVehicle_model() + "\n" +
+                                "Vehicle Type: " + vehicle.getVehicle_type() + "\n" +
+                                "Vehicle Manufacturer: " + vehicle.getVehicle_manufacturer() + "\n" +
+                                "Vehicle Price: " + vehicle.getPrice() + vehicle.getCurrencyType()
+                        )
+
                 .setPositiveButton( "OK", (dialog1, id) -> dialog1.dismiss()).create();
 
         dialog.show();
