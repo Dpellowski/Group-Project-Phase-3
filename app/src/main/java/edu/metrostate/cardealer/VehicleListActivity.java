@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import edu.metrostate.cardealer.models.Dealer;
 import edu.metrostate.cardealer.models.Vehicle;
 
 public class VehicleListActivity extends AppCompatActivity {
@@ -19,11 +22,18 @@ public class VehicleListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_list);
 
+        //Xue's code
+        Intent i = getIntent();
+        Dealer dealerObject = (Dealer)i.getSerializableExtra("selectedDealer");
+        TextView dealerName = findViewById(R.id.dealerNameVehicleList);
+        dealerName.setText(dealerObject.getName());
+
+
         // Get the application instance from the activity
         CarDealerApplication app = (CarDealerApplication) getApplication();
 
         // Create an adapter for the list view
-        VehicleAdapter adapter = new VehicleAdapter(this, app.getVehicleList());
+        VehicleAdapter adapter = new VehicleAdapter(this, dealerObject.getListOfCarsAtDealer());
 
         // Find the list view and add the adapter
         ListView vehicleList = ((ListView)findViewById(R.id.vehicle_list));

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,7 +33,13 @@ public class DealerListActivity  extends AppCompatActivity{
         dealerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showDialog(adapter.getItem(position));
+                //showDialog(adapter.getItem(position));
+
+                //Xue's codes, vehicleListActivity switched out for ListOfVehiclesAtDealer
+                Intent i = new Intent(DealerListActivity.this, VehicleListActivity.class);
+                Dealer selectedDealer = adapter.getItem(position);
+                i.putExtra("selectedDealer", selectedDealer);
+                startActivity(i);
             }
         });
 
