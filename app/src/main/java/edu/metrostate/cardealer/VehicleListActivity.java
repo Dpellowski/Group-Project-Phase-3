@@ -58,7 +58,8 @@ public class VehicleListActivity extends AppCompatActivity {
                 .setMessage("Model: " + vehicle.getVehicle_model() + "\n" +
                                 "Vehicle Type: " + vehicle.getVehicle_type() + "\n" +
                                 "Vehicle Manufacturer: " + vehicle.getVehicle_manufacturer() + "\n" +
-                                "Vehicle Price: " + vehicle.getPrice() + vehicle.getCurrencyType()
+                                "Vehicle Price: " + vehicle.getPrice() + vehicle.getCurrencyType() + "\n" +
+                                "Rental Status: " + vehicle.getIsLoaned()
                         )
 
                 .setPositiveButton( "OK", (dialog1, id) -> dialog1.dismiss()).create();
