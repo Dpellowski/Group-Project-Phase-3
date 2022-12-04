@@ -25,7 +25,7 @@ public class VehicleListActivity extends AppCompatActivity {
         //Xue's code
         Intent i = getIntent();
         Dealer dealerObject = (Dealer)i.getSerializableExtra("selectedDealer");
-        TextView dealerName = findViewById(R.id.dealerNameVehicleList);
+        TextView dealerName = findViewById(R.id.title);
         dealerName.setText(dealerObject.getName());
 
 
