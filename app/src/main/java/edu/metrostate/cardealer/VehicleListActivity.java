@@ -69,4 +69,18 @@ public class VehicleListActivity extends AppCompatActivity {
 
 
     }
+
+    public void addCarBtn(View v){
+        //Intent to go to the AddCarActivity
+        Intent i = new Intent(VehicleListActivity.this, AddCarActivity.class);
+
+        //Intent to get the dealer from previous activity
+        Intent dealerGetter = getIntent();
+        Dealer dealerObject = (Dealer)dealerGetter.getSerializableExtra("selecedDealer");
+
+        //Dealer object to be pass over to the AddCarActivity
+        i.putExtra("DealerObject", dealerObject);
+
+        startActivity(i);
+    }
 }
