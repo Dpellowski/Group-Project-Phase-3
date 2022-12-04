@@ -44,6 +44,7 @@ public class VehicleListActivity extends AppCompatActivity {
         vehicleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //todo hunter or valle on click open commands and rig commands up to buttons
                 showDialog(adapter.getItem(position));
             }
         });

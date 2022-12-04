@@ -18,8 +18,7 @@ import edu.metrostate.cardealer.models.Company;
 import edu.metrostate.cardealer.models.Dealer;
 import edu.metrostate.cardealer.models.Vehicle;
 public class CarDealerApplication extends Application {
-    private final List<Vehicle> vehicleList = new ArrayList<>();
-    private final List<Dealer> dealerList = new ArrayList<>();
+    private List<Dealer> dealerList = new ArrayList<>();
 
     @Override
     public void onCreate() {
@@ -29,9 +28,6 @@ public class CarDealerApplication extends Application {
 
     }
 
-    public List<Vehicle> getVehicleList() {
-        return vehicleList;
-    }
     public List<Dealer> getDealerList() {
         return dealerList;
     }
@@ -67,15 +63,9 @@ public class CarDealerApplication extends Application {
 
         fileImport.fileImport(inputFile.getAbsolutePath());
 
-        //debug
-        //todo make it dealers
-        for(Dealer d : Company.getCompany()){
-            vehicleList.addAll(d.getListOfCarsAtDealer());
-        }
-        //Populate dealerList
-        for (Dealer d : Company.getCompany()) {
-            dealerList.add(d);
-        }
+        //set dealerList to our company dealerlist
+        dealerList = Company.getCompany();
+
 
 
 
