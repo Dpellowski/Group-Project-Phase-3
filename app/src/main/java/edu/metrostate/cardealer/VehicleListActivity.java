@@ -56,6 +56,9 @@ public class VehicleListActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setTitle("Vehicle ID: " + vehicle.getVehicle_id())
                 .setMessage("Model: " + vehicle.getVehicle_model())
+                .setMessage("Vehicle Type: " + vehicle.getVehicle_type())
+                .setMessage("Vehicle Manufacturer: " + vehicle.getVehicle_manufacturer())
+                .setMessage("Vehicle Price: " + vehicle.getPrice())
                 .setPositiveButton( "OK", (dialog1, id) -> dialog1.dismiss()).create();
 
         dialog.show();
