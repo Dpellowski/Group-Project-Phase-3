@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import edu.metrostate.cardealer.controllers.commands.SaveSerializedData;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -32,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
                 // Launch the new Activity
                 startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CarDealerApplication app = (CarDealerApplication) getApplication();
+
+                app.writeFile();
             }
         });
 
