@@ -11,12 +11,11 @@ public class CreateDealer {
 
         //check if dealer ID already exists in Company.getCompany()
         //if dealer ID already exists error
-        for(Dealer d : Company.getCompany()){
+        //Utilizes Compang.dealerExists now
+        Dealer dealer = Company.dealerExists(dealerID);
 
-            if(d.getDealer_id().equals(dealerID)){
-
-                invalid_DealerID = true;
-            }
+        if(dealer != null){
+            invalid_DealerID = true;
         }
 
         //if dealerID is unique, create the dealer
