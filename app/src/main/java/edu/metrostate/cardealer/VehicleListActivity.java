@@ -3,7 +3,6 @@ package edu.metrostate.cardealer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -54,23 +53,29 @@ public class VehicleListActivity extends AppCompatActivity {
 
     public void showDialog(Vehicle vehicle) {
 
-        Dialog dialog = new AlertDialog.Builder(this)
+
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this)
                 .setTitle("My alert")
                 .setCancelable(false)
                 .setTitle("Vehicle ID: " + vehicle.getVehicle_id())
                 .setMessage("Model: " + vehicle.getVehicle_model() + "\n" +
-                                "Vehicle Type: " + vehicle.getVehicle_type() + "\n" +
-                                "Vehicle Manufacturer: " + vehicle.getVehicle_manufacturer() + "\n" +
-                                "Vehicle Price: " + vehicle.getPrice() + vehicle.getCurrencyType() + "\n" +
-                                "Rental Status: " + vehicle.getIsLoaned()
-                        )
-
-                .setPositiveButton( "OK", (dialog1, id) -> dialog1.dismiss()).create();
-
+                        "Vehicle Type: " + vehicle.getVehicle_type() + "\n" +
+                        "Vehicle Manufacturer: " + vehicle.getVehicle_manufacturer() + "\n" +
+                        "Vehicle Price: " + vehicle.getPrice() + vehicle.getCurrencyType() + "\n" +
+                        "Rental Status: " + vehicle.getIsLoaned()
+                )
+                .setPositiveButton( "Edit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(VehicleListActivity.this, VehicleEditActivity.class);
+                        i.putExtra("vehicleObject", vehicle);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+            dialog.setNegativeButton("Cancel", (dialog1, id) -> dialog1.dismiss()).create();
         dialog.show();
-
-
-
     }
 
     public void addCarBtn(View v){
@@ -78,8 +83,9 @@ public class VehicleListActivity extends AppCompatActivity {
         Intent i = new Intent(VehicleListActivity.this, AddCarActivity.class);
 
         //Dealer object to be pass over to the AddCarActivity
-        i.putExtra("DealerObject", dealerObject);
+        i.putExtra("dealerObject", dealerObject);
 
         startActivity(i);
+        finish();
     }
 }

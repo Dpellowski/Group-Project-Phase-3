@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">CarDealer</string>
+    <string name="carTypeDesc">Select Car Type</string>
+    <string name="currencyTypeDesc">Select Currency Type</string>
+
+    <string-array name = "carTypes">
+        <item>Sedan</item>
+        <item>Pickup</item>
+        <item>Sports Car</item>
+        <item>SUV</item>
+    </string-array>
+
+    <string-array name = "currencyTypes">
+        <item>$</item>
+        <item>£</item>
+    </string-array>
+
 </resources>

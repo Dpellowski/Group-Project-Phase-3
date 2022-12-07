@@ -7,42 +7,42 @@
     tools:context=".AddCarActivity">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/vehiclePrice"
+        android:id="@+id/editPrice"
         android:layout_width="178dp"
         android:layout_height="50dp"
         android:layout_marginTop="320dp"
-        android:hint="Enter Car Price..."
+        android:text="Price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/vehicleMake"
+        android:id="@+id/editMake"
         android:layout_width="266dp"
         android:layout_height="48dp"
         android:layout_marginTop="121dp"
-        android:hint="Enter Car Make..."
+        android:text="Make"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/vehicleModel"
+        android:id="@+id/editModel"
         android:layout_width="266dp"
         android:layout_height="48dp"
-        android:hint="Enter Car Model..."
-        app:layout_constraintBottom_toTopOf="@+id/vehicleId"
+        android:text="Model"
+        app:layout_constraintBottom_toTopOf="@+id/editID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleMake" />
+        app:layout_constraintTop_toBottomOf="@+id/editMake" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/vehicleId"
+        android:id="@+id/editID"
         android:layout_width="266dp"
         android:layout_height="48dp"
         android:layout_marginTop="249dp"
-        android:hint="Enter Car ID..."
+        android:text="Vehicle ID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,15 +52,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:text="Add Car"
+        android:text="Edit Vehicle"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/vehicleMake"
+        app:layout_constraintBottom_toTopOf="@+id/editMake"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.372" />
 
     <Spinner
-        android:id="@+id/vehicleType"
+        android:id="@+id/editType"
         android:layout_width="267dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -68,27 +70,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehiclePrice" />
+        app:layout_constraintTop_toBottomOf="@+id/editPrice" />
 
     <Spinner
-        android:id="@+id/vehicleCurrencyType"
+        android:id="@+id/editCurrencyType"
         android:layout_width="87dp"
         android:layout_height="50dp"
         android:layout_marginTop="320dp"
         android:contentDescription="@string/currencyTypeDesc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toEndOf="@+id/vehiclePrice"
+        app:layout_constraintStart_toEndOf="@+id/editPrice"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/editSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Car"
+        android:text="Save "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleCurrencyType" />
+        app:layout_constraintTop_toBottomOf="@+id/editCurrencyType"
+        app:layout_constraintVertical_bias="0.498" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

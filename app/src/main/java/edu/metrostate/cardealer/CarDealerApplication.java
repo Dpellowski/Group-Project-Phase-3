@@ -82,11 +82,6 @@ public class CarDealerApplication extends Application {
         //set dealerList to our company dealerlist
         dealerList = Company.getCompany();
 
-
-
-
     }
-
-
 
 }
