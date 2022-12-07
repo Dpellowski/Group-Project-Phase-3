@@ -94,6 +94,11 @@ public class Dealer implements java.io.Serializable{
         }
     }
 
+    public boolean getBoolActivationStatus(){
+
+        return isActivated;
+    }
+
 
     public Dealer(String id, boolean status) {
 
