@@ -48,6 +48,17 @@ public class DealerListActivity  extends AppCompatActivity{
             }
         });
 
+        findViewById(R.id.buttonAddDealer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create the intent with the new activity
+                Intent intent = new Intent(DealerListActivity.this, AddDealerActivity.class);
+
+                // Launch the new Activity
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
