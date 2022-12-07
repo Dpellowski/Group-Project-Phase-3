@@ -1,4 +1,4 @@
-package edu.metrostate.cardealer.controllers;
+package edu.metrostate.cardealer.controllers.converters;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-public class Converters {
+public class XmlToArray {
 
     public List<Dealer> fromXmlToArr(File xml) throws ParserConfigurationException, IOException, SAXException {
         List<Dealer> listOfDealers = new ArrayList<>();
@@ -135,71 +135,6 @@ public class Converters {
         return listOfDealers;
     }
 
-    public List<Dealer> fromJsonToInvArr(FileReader json) {
-
-        List<Dealer> listOfDealers = new ArrayList<>();
-
-        JsonObject obj = JsonParser.parseReader(json).getAsJsonObject();
-
-        JsonArray jCars = obj.get("car_inventory").getAsJsonArray();
-
-        ArrayList<Vehicle> cars = new ArrayList<>();
-
-        ArrayList<String> allowedVehicles = new ArrayList<>();
-        allowedVehicles.add("suv");
-        allowedVehicles.add("pickup");
-        allowedVehicles.add("sports car");
-        allowedVehicles.add("sedan");
-
-        //this enhanced for loop will iterate through each json element in a file and create a inventory object for each vehicle within the file
-        for (JsonElement c : jCars) {
-
-            String vehicleTypeString = c.getAsJsonObject().get("vehicle_type").getAsString();
-
-            if (allowedVehicles.contains(vehicleTypeString)) {
-
-                Vehicle car = new Vehicle(
-                        c.getAsJsonObject().get("dealership_id").getAsString(),
-                        c.getAsJsonObject().get("vehicle_type").getAsString(),
-                        c.getAsJsonObject().get("vehicle_manufacturer").getAsString(), // <- Breaks on third iteration
-                        c.getAsJsonObject().get("vehicle_model").getAsString(),
-                        c.getAsJsonObject().get("vehicle_id").getAsString(),
-                        c.getAsJsonObject().get("price").getAsInt(),
-                        c.getAsJsonObject().get("acquisition_date").getAsLong());
-                cars.add(car);
-            } else {
-
-                //if a non allowed car is read, do not add it to cars
-                System.out.println("Vehicle Type of " + vehicleTypeString + " is not allowed for vehicle ID: "
-                        + c.getAsJsonObject().get("vehicle_id").getAsString());
-                System.out.println("Vehicle not added.");
-            }
-        }
-
-        if (listOfDealers.size() == 0 && cars.size() > 0) {
-
-                Dealer d = new Dealer(cars.get(0).getDealership_id(), true);
-                //d.setName(dealersNames.get(d.getDealer_id()));
-                listOfDealers.add(d);
-        }
-
-        //This method duplicates cars
-        for(Vehicle car : cars) {
-
-            Dealer dealer = listOfDealers.stream().filter(d -> d.getDealer_id().equals(car.getDealership_id())).findFirst().orElse(null);
-            if( dealer == null ) {
-
-                dealer = new Dealer(car.getDealership_id(), true);
-                //dealer.setName(dealersNames.get(dealer.getDealer_id()));
-                listOfDealers.add(dealer);
-            }
-
-            dealer.addToListOfCarsAtDealer(car);
-        }
-
-        return listOfDealers;
-    }
-
     //this method takes an input Dealer such as a dealership and then it converts the list of vehicles for that Dealer into a .json file into your D:\ drive
     public void convertToJson(Dealer dealer) {
 
@@ -223,30 +158,6 @@ public class Converters {
         } catch (IOException e) {
 
             throw new RuntimeException(e);
-        }
-    }
-
-    //get out
-    public static void deserializeData(String serializedDataPath){
-        List<Dealer> listOfDealers = null;
-        try {
-
-            // This block of code  of creates an object of arrayList containing the vehicle objects to be loaded into our program further down
-            FileInputStream serializedDataFile = new FileInputStream(serializedDataPath);
-            ObjectInputStream inputObjects = new ObjectInputStream(serializedDataFile);
-            listOfDealers = (List<Dealer>)inputObjects.readObject();
-            serializedDataFile.close();
-            inputObjects.close();            
-            Company.getCompany().addAll(listOfDealers);
-
-        } catch (IOException i) {
-
-            i.printStackTrace();
-            System.out.println("fail ioexception deserialize");
-        } catch (ClassNotFoundException e) {
-
-            e.printStackTrace();
-            System.out.println("fail classnotfoundexception deserialize");
         }
     }
 }

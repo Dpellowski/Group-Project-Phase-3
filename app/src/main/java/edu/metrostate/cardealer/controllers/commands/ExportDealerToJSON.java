@@ -1,6 +1,6 @@
 package edu.metrostate.cardealer.controllers.commands;
 
-import edu.metrostate.cardealer.controllers.Converters;
+import edu.metrostate.cardealer.controllers.converters.XmlToArray;
 import edu.metrostate.cardealer.models.Company;
 import edu.metrostate.cardealer.models.Dealer;
 
@@ -8,7 +8,7 @@ public class ExportDealerToJSON {
 
     public boolean exportDealerToJSON(String dealerID) {
 
-        Converters c = new Converters();
+        XmlToArray c = new XmlToArray();
 
         boolean invalid_DealerID = true;
 

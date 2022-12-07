@@ -1,6 +1,7 @@
 package edu.metrostate.cardealer.controllers.commands;
 
-import edu.metrostate.cardealer.controllers.Converters;
+import edu.metrostate.cardealer.controllers.converters.JsonToArray;
+import edu.metrostate.cardealer.controllers.converters.XmlToArray;
 import edu.metrostate.cardealer.models.Company;
 import edu.metrostate.cardealer.models.Dealer;
 import edu.metrostate.cardealer.models.Vehicle;
@@ -21,14 +22,15 @@ public class FileImporter {
         List<Dealer> listOfDealers;
 
         //list of dealers contains all cars read from json file
-        Converters c = new Converters();
+        JsonToArray json = new JsonToArray();
+        XmlToArray xml = new XmlToArray();
         if(fileName.endsWith(".xml")){
             File file = new File(fileName);
-            listOfDealers = c.fromXmlToArr(file);
+            listOfDealers = xml.fromXmlToArr(file);
         }
         else{
             FileReader file = new FileReader(fileName);
-            listOfDealers = c.fromJsonToInvArr(file);
+            listOfDealers = json.fromJsonToInvArr(file);
         }
 
 

@@ -1,7 +1,8 @@
 package edu.metrostate.cardealer;
 
 import android.app.Application;
-import android.util.Log;
+import android.content.Context;
+import android.widget.Toast;
 
 import org.xml.sax.SAXException;
 
@@ -9,17 +10,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import edu.metrostate.cardealer.controllers.Converters;
+import edu.metrostate.cardealer.controllers.converters.Deserializer;
+import edu.metrostate.cardealer.controllers.converters.XmlToArray;
 import edu.metrostate.cardealer.controllers.commands.FileImporter;
 import edu.metrostate.cardealer.models.Company;
 import edu.metrostate.cardealer.models.Dealer;
-import edu.metrostate.cardealer.models.Vehicle;
+
 public class CarDealerApplication extends Application {
     private List<Dealer> dealerList = new ArrayList<>();
 
@@ -37,9 +38,11 @@ public class CarDealerApplication extends Application {
         File externalDir = getExternalFilesDir(null);
         File f = new File(externalDir+"/save_data.ser");
 
+        Deserializer deserialize = new Deserializer();
+
         if(f.exists() && !f.isDirectory()){
 
-            Converters.deserializeData(externalDir+"/save_data.ser");
+            deserialize.deserializeData(externalDir+"/save_data.ser");
         }
 
         dealerList = Company.getCompany();
@@ -50,7 +53,7 @@ public class CarDealerApplication extends Application {
         //TODO: Remove this code
         // Gets the output path which is /sdcard/Android/data/edu.metrostate.cardealer/files directory
         File externalDir = getExternalFilesDir(null);
-
+        Context context = getApplicationContext();
         try {
 
             //create an ouput file named company-serialized-data.ser (serialized extension)
@@ -61,10 +64,17 @@ public class CarDealerApplication extends Application {
             out.writeObject(Company.getCompany());
             out.close();
             fileOut.close();
+
+
+            Toast.makeText(context, "Save was successful.",
+                    Toast.LENGTH_LONG).show();
         } catch (IOException i) {
 
             i.printStackTrace();
             System.out.println("Failed to serialize specified data");
+            Toast.makeText(context, "Save failed.",
+                    Toast.LENGTH_LONG).show();
+
         }
 
     }
