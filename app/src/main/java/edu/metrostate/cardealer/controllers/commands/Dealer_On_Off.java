@@ -13,7 +13,7 @@ public class Dealer_On_Off {
         for (int i = 0; i < listOfDealers.size(); i++) {
             if (dealerId.equals(listOfDealers.get(i).getDealer_id())) {
                 Dealer d =  listOfDealers.get(i);
-                d.setIsActivatedStatus(!d.getBoolActivationStatus());
+                d.setIsActivatedStatus(!d.getisActivatedStatus());
             }
 
         }
