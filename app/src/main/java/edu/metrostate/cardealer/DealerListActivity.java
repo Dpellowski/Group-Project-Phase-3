@@ -30,8 +30,12 @@ public class DealerListActivity  extends AppCompatActivity{
         ListView dealerList = ((ListView)findViewById(R.id.dealer_list));
         dealerList.setAdapter(adapter);
 
-        //todo hunter or valle onHold open command intent for dealer
+        //todo onHold open command intent for dealer
+//
+
         dealerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //showDialog(adapter.getItem(position));

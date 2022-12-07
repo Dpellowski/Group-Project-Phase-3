@@ -4,16 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:descendantFocusability="blocksDescendants"
+    >
 
     <TextView
         android:id="@+id/dealer_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+
         android:text="Dealer ID"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="-2dp" />
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dealer_status"
@@ -23,8 +32,26 @@
         android:layout_marginTop="5dp"
         android:text="Dealer Status"
         android:textSize="16sp"
+
+        android:focusable="false"
+        android:focusableInTouchMode= "false"
+
         app:layout_constraintTop_toBottomOf="@+id/dealer_id"
         tools:layout_editor_absoluteX="4dp" />
+
+    <Switch
+        android:id="@+id/switch_activation_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+
+        android:focusableInTouchMode="false"
+        android:text="Activation"
+
+        app:layout_constraintBottom_toTopOf="@+id/dealer_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dealer_id"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

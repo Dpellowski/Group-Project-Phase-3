@@ -15,6 +15,6 @@ public class AddCarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_car);
 
         Intent i = getIntent();
-        Dealer dealerObect =(Dealer)i.getSerializableExtra("DealerObject");
+        Dealer dealerObject =(Dealer)i.getSerializableExtra("DealerObject");
     }
 }
