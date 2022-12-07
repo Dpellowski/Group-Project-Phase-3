@@ -95,6 +95,8 @@ public class Dealer implements java.io.Serializable{
     }
 
 
+
+
     public Dealer(String id, boolean status) {
 
         dealer_id = id;
