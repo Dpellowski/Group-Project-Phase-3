@@ -36,7 +36,6 @@ public class DealerAdapter extends ArrayAdapter<Dealer> {
         }
 
         Switch switch_activation_status = convertView.findViewById(R.id.switch_activation_status);
-        Button button_deleteDealer = convertView.findViewById(R.id.buttonDeleteDealer);
         TextView id = convertView.findViewById(R.id.dealer_id);
         TextView model = convertView.findViewById(R.id.dealer_status);
 
