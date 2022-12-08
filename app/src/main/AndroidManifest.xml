@@ -56,6 +56,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".DeleteDealerActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".VehicleEditActivity"
             android:exported="false">
             <meta-data

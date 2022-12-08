@@ -2,9 +2,6 @@ package edu.metrostate.cardealer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -56,6 +53,20 @@ public class DealerListActivity  extends AppCompatActivity{
 
                 // Launch the new Activity
                 startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.buttonDeleteDealer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                finish();
+                //Intent to go to the AddCarActivity
+                Intent i = new Intent(DealerListActivity.this, DeleteDealerActivity.class);
+
+                startActivity(i);
+
             }
         });
 

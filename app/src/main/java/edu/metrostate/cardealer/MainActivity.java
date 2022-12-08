@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.show_vehicle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                finish();
                 // Create the intent with the new activity
                 Intent intent = new Intent(MainActivity.this, DealerListActivity.class);
 
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.import_file).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                finish();
                 // Create the intent with the new activity
                 Intent intent = new Intent(MainActivity.this, ImportFileActivity.class);
 

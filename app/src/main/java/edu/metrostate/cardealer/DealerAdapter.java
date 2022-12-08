@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +18,12 @@ import edu.metrostate.cardealer.models.Dealer;
 import java.util.List;
 
 public class DealerAdapter extends ArrayAdapter<Dealer> {
+
+    private Context context;
     public DealerAdapter(Context context, List<Dealer> shelterList) {
         super(context, R.layout.dealer_item, shelterList);
+        this.context = context;
+
     }
 
 
@@ -32,6 +36,7 @@ public class DealerAdapter extends ArrayAdapter<Dealer> {
         }
 
         Switch switch_activation_status = convertView.findViewById(R.id.switch_activation_status);
+        Button button_deleteDealer = convertView.findViewById(R.id.buttonDeleteDealer);
         TextView id = convertView.findViewById(R.id.dealer_id);
         TextView model = convertView.findViewById(R.id.dealer_status);
 
@@ -53,6 +58,7 @@ public class DealerAdapter extends ArrayAdapter<Dealer> {
                 model.setText(getItem(position).getActivatedStatus());
             }
         });
+
 
         return convertView;
     }

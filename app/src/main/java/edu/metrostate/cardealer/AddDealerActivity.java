@@ -82,6 +82,8 @@ public class AddDealerActivity extends AppCompatActivity {
         findViewById(R.id.button_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                finish();
                 // Create the intent with the new activity
                 Intent intent = new Intent(AddDealerActivity.this, DealerListActivity.class);
 

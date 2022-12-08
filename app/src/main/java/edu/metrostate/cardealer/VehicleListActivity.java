@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import edu.metrostate.cardealer.controllers.commands.DeleteDealer;
 import edu.metrostate.cardealer.models.Dealer;
 import edu.metrostate.cardealer.models.Vehicle;
 
@@ -47,6 +48,8 @@ public class VehicleListActivity extends AppCompatActivity {
                 showDialog(adapter.getItem(position));
             }
         });
+
+
 
 
     }
@@ -88,4 +91,6 @@ public class VehicleListActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
+
 }
