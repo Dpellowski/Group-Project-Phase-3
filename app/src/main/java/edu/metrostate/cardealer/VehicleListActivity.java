@@ -28,7 +28,13 @@ public class VehicleListActivity extends AppCompatActivity {
         Intent i = getIntent();
         dealerObject = (Dealer)i.getSerializableExtra("selectedDealer");
         TextView dealerName = findViewById(R.id.title);
-        dealerName.setText(dealerObject.getName());
+        if(dealerObject.getName().equals("")){
+            dealerName.setText("No name Dealer");
+        }
+        else{
+            dealerName.setText(dealerObject.getName());
+        }
+
 
 
         // Get the application instance from the activity
